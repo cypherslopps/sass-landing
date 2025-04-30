@@ -1,12 +1,13 @@
-import avatar1 from "@/assets/avatar-1.png";
-import avatar2 from "@/assets/avatar-2.png";
-import avatar3 from "@/assets/avatar-3.png";
-import avatar4 from "@/assets/avatar-4.png";
-import avatar5 from "@/assets/avatar-5.png";
-import avatar6 from "@/assets/avatar-6.png";
-import avatar7 from "@/assets/avatar-7.png";
-import avatar8 from "@/assets/avatar-8.png";
-import avatar9 from "@/assets/avatar-9.png";
+import avatar1 from "@/public/images/avatar-1.png";
+import avatar2 from "@/public/images/avatar-2.png";
+import avatar3 from "@/public/images/avatar-3.png";
+import avatar4 from "@/public/images/avatar-4.png";
+import avatar5 from "@/public/images/avatar-5.png";
+import avatar6 from "@/public/images/avatar-6.png";
+import avatar7 from "@/public/images/avatar-7.png";
+import avatar8 from "@/public/images/avatar-8.png";
+import avatar9 from "@/public/images/avatar-9.png";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -65,6 +66,52 @@ const testimonials = [
   },
 ];
 
+const firstColumn = testimonials.slice(0, 3);
+const secondColumn = testimonials.slice(3,6);
+const thirdColumn = testimonials.slice(6, 9);
+
 export const Testimonials = () => {
-  return null;
+  return (
+    <section className="bg-white">
+      <div className="container">
+        <header className="section-heading">
+          <div className="flex justify-center">
+            <span className="tag">Testimonials</span>
+          </div>
+          <h2 className="section-title">What our users say</h2>
+          <p className="section-description">
+            From intuitive design to powerful features, our app has become an essential tool for users around the world.
+          </p>
+        </header>
+
+        <div className="flex justify-center">
+
+        </div>
+
+        <div className="flex flex-col gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
+          {firstColumn.map(({ text, imageSrc, name, username }) => (
+            <div 
+              key={name} 
+              className="card !max-w-full"
+            >
+              <div>{text}</div>
+              <div className="flex items-center gap-2 mt-5">
+                <Image 
+                  src={imageSrc}
+                  alt={name}
+                  width={40}
+                  height={40}
+                  className="size-10 rounded-full"
+                />
+                <div className="flex flex-col">
+                  <p className="font-medium tracking-tight leading-5">{name}</p>
+                  <span className="leading-5">{username}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
