@@ -1,9 +1,11 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import { 
   motion,
-  useScroll 
+  useScroll,
+  useTransform,
 } from "motion/react";
 
 import ArrowRightIcon from "@/public/icons/arrow-right.svg";
@@ -12,12 +14,18 @@ import cylinderImage from "@/public/images/cylinder.png";
 import noodleImage from "@/public/images/noodle.png";
 
 const Hero = () => {
+  const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
-
+    target: heroRef,
+    offset: ["start end", "end start"]
   });
-  
+  const translateY = useTransform(scrollYProgress, [0,1], [150,-150]);
+
   return (
-    <section className="pt-8 pb-20 md:pt-5 md:pb-10 bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183EC2,#EAEEFE_100%)] overflow-x-clip">
+    <section 
+      ref={heroRef}  
+      className="pt-8 pb-20 md:pt-5 md:pb-10 bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183EC2,#EAEEFE_100%)] overflow-x-clip"
+    >
       <div className="container">
         <div className="md:flex items-center">
           <div className="md:w-[478px]">
@@ -60,13 +68,18 @@ const Hero = () => {
               width={220}
               height={220}
               className="hidden md:block md:absolute -top-8 -left-32"
+              style={{ translateY }}
             />
 
-            <Image 
-              src={noodleImage}
+            <motion.img 
+              src={noodleImage.src}
               alt="Noodle Image"
               width={220}
               className="hidden md:block md:absolute top-[524px] left-[448px] rotate-[30deg]"
+              style={{
+                rotate: 15,
+                translateY: translateY
+              }}
             />
           </div>
         </div>
