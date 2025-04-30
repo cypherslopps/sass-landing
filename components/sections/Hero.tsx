@@ -1,4 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { 
+  motion,
+  useScroll 
+} from "motion/react";
 
 import ArrowRightIcon from "@/public/icons/arrow-right.svg";
 import cogImage from "@/public/images/cog.png";
@@ -6,6 +12,10 @@ import cylinderImage from "@/public/images/cylinder.png";
 import noodleImage from "@/public/images/noodle.png";
 
 const Hero = () => {
+  const { scrollYProgress } = useScroll({
+
+  });
+  
   return (
     <section className="pt-8 pb-20 md:pt-5 md:pb-10 bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183EC2,#EAEEFE_100%)] overflow-x-clip">
       <div className="container">
@@ -29,14 +39,23 @@ const Hero = () => {
           </div>
 
           <div className="mt-20 md:mt-0 md:h-[648px] md:flex-1 relative">
-            <Image 
-              src={cogImage}
+            <motion.img 
+              src={cogImage.src}
               alt="Cog image"
               className="md:absolute md:h-full md:w-auto md:max-w-none md:-left-6 lg:left-0"
+              animate={{
+                translateY: [-30, 30],
+              }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "mirror",
+                duration: 3,
+                ease: "easeInOut"
+              }}
             />
 
-            <Image 
-              src={cylinderImage}
+            <motion.img 
+              src={cylinderImage.src}
               alt="Cylinder Image"
               width={220}
               height={220}
