@@ -7,11 +7,11 @@ import {
   useTransform 
 } from "motion/react";
 
-import ArrowRight from "@/public/icons/arrow-right.svg";
-import starImage from "@/public/images/star.png";
-import springImage from "@/public/images/spring.png";
+import ArrowRight from "@/assets/icons/arrow-right.svg";
+import starImage from "@/assets/images/star.png";
+import springImage from "@/assets/images/spring.png";
 
-export const CallToAction = () => {
+const CallToAction = () => {
   const sectionRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -59,3 +59,5 @@ export const CallToAction = () => {
     </section>
   );
 };
+
+export default CallToAction;

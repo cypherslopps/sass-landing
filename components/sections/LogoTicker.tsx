@@ -3,14 +3,14 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 
-import acmeLogo from "@/public/images/logo-acme.png";
-import quantumLogo from "@/public/images/logo-quantum.png";
-import echoLogo from "@/public/images/logo-echo.png";
-import celestialLogo from "@/public/images/logo-celestial.png";
-import pulseLogo from "@/public/images/logo-pulse.png";
-import apexLogo from "@/public/images/logo-apex.png";
+import acmeLogo from "@/assets/images/logo-acme.png";
+import quantumLogo from "@/assets/images/logo-quantum.png";
+import echoLogo from "@/assets/images/logo-echo.png";
+import celestialLogo from "@/assets/images/logo-celestial.png";
+import pulseLogo from "@/assets/images/logo-pulse.png";
+import apexLogo from "@/assets/images/logo-apex.png";
 
-export const LogoTicker = () => {
+const LogoTicker = () => {
   return (
     <div className="py-8 md:py-12 bg-white">
       <div className="container">
@@ -105,3 +105,6 @@ export const LogoTicker = () => {
     </div>
   );
 };
+
+LogoTicker.displayName = "Hero";
+export default LogoTicker;

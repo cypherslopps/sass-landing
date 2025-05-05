@@ -2,17 +2,17 @@
 
 import { Fragment } from "react";
 import { motion } from "motion/react";
-
-import avatar1 from "@/public/images/avatar-1.png";
-import avatar2 from "@/public/images/avatar-2.png";
-import avatar3 from "@/public/images/avatar-3.png";
-import avatar4 from "@/public/images/avatar-4.png";
-import avatar5 from "@/public/images/avatar-5.png";
-import avatar6 from "@/public/images/avatar-6.png";
-import avatar7 from "@/public/images/avatar-7.png";
-import avatar8 from "@/public/images/avatar-8.png";
-import avatar9 from "@/public/images/avatar-9.png";
 import Image from "next/image";
+
+import avatar1 from "@/assets/images/avatar-1.png";
+import avatar2 from "@/assets/images/avatar-2.png";
+import avatar3 from "@/assets/images/avatar-3.png";
+import avatar4 from "@/assets/images/avatar-4.png";
+import avatar5 from "@/assets/images/avatar-5.png";
+import avatar6 from "@/assets/images/avatar-6.png";
+import avatar7 from "@/assets/images/avatar-7.png";
+import avatar8 from "@/assets/images/avatar-8.png";
+import avatar9 from "@/assets/images/avatar-9.png";
 
 const testimonials = [
   {
@@ -122,7 +122,7 @@ const TestimonialsColumn = (props: {
   )
 }
 
-export const Testimonials = () => {
+const Testimonials = () => {
   return (
     <section className="bg-white">
       <div className="container">
@@ -156,3 +156,6 @@ export const Testimonials = () => {
     </section>
   );
 };
+
+
+export default Testimonials;

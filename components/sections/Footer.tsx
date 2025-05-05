@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import logo from "@/public/images/logosaas.png";
-import SocialX from "@/public/icons/social-x.svg";
-import SocialInsta from "@/public/icons/social-insta.svg";
-import SocialLinkedIn from "@/public/icons/social-linkedin.svg";
-import SocialPin from "@/public/icons/social-pin.svg";
-import SocialYoutube from "@/public/icons/social-youtube.svg";
+import logo from "@/assets/images/logosaas.png";
+import SocialX from "@/assets/icons/social-x.svg";
+import SocialInsta from "@/assets/icons/social-insta.svg";
+import SocialLinkedIn from "@/assets/icons/social-linkedin.svg";
+import SocialPin from "@/assets/icons/social-pin.svg";
+import SocialYoutube from "@/assets/icons/social-youtube.svg";
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer className="bg-black text-[#BCBCBC] text-sm py-10 text-center">
       <div className="container">
@@ -59,3 +59,6 @@ export const Footer = () => {
     </footer>
   );
 };
+
+Footer.displayName = "Footer";
+export default Footer;

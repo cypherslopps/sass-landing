@@ -1,19 +1,18 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { 
   motion,
   useScroll,
   useTransform,
 } from "motion/react";
 
-import ArrowRightIcon from "@/public/icons/arrow-right.svg";
-import cogImage from "@/public/images/cog.png";
-import cylinderImage from "@/public/images/cylinder.png";
-import noodleImage from "@/public/images/noodle.png";
+import ArrowRightIcon from "@/assets/icons/arrow-right.svg";
+import cogImage from "@/assets/images/cog.png";
+import cylinderImage from "@/assets/images/cylinder.png";
+import noodleImage from "@/assets/images/noodle.png";
 
-const Hero = () => {
+export default function Hero() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -88,4 +87,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+Hero.displayName = "Hero";

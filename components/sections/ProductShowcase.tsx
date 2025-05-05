@@ -1,16 +1,16 @@
 "use client";
 
+import Image from "next/image";
+import { useRef } from "react";
 import { 
   motion,
   useScroll,
   useTransform 
 } from "motion/react";
 
-import productImage from "@/public/images/product-image.png";
-import pyramidImage from "@/public/images/pyramid.png";
-import tubeImage from "@/public/images/tube.png";
-import Image from "next/image";
-import { useRef } from "react";
+import productImage from "@/assets/images/product-image.png";
+import pyramidImage from "@/assets/images/pyramid.png";
+import tubeImage from "@/assets/images/tube.png";
 
 const ProductShowcase = () => {
   const sectionRef = useRef(null);

@@ -3,7 +3,7 @@
 import { twMerge } from "tailwind-merge";
 import { motion } from "motion/react";
 
-import CheckIcon from "@/public/icons/check.svg";
+import CheckIcon from "@/assets/icons/check.svg";
 
 const pricingTiers = [
   {
@@ -57,7 +57,7 @@ const pricingTiers = [
   },
 ];
 
-export const Pricing = () => {
+const Pricing = () => {
   return (
     <section className="py-24 bg-white">
       <div className="container">
@@ -142,3 +142,6 @@ export const Pricing = () => {
     </section>
   );
 };
+
+Pricing.displayName = "Hero";
+export default Pricing;

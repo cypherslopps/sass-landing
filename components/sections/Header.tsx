@@ -1,9 +1,9 @@
 import Image from "next/image";
-
-import ArrowRight from "@/public/icons/arrow-right.svg";
-import Logo from "@/public/images/logosaas.png";
-import MenuIcon from "@/public/icons/menu.svg";
 import Link from "next/link";
+
+import ArrowRight from "@/assets/icons/arrow-right.svg";
+import Logo from "@/assets/images/logosaas.png";
+import MenuIcon from "@/assets/icons/menu.svg";
 
 const Header = () => {
   return (
@@ -44,4 +44,5 @@ const Header = () => {
   );
 };
 
+Header.displayName = "Header";
 export default Header;
