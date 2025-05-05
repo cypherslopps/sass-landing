@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SASS Landing
 
-## Getting Started
+An animated aesthetically landing page sample for SASS Projects.
 
-First, run the development server:
+### Tools
+- Tailwindcss
+- Motion
+- Nextjs
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Challenges
+- I had serious issues configuring @svgr/webpack for all imported svg icons in my app. I was able to solve this by configuring next.config.ts and creating an svg declaration file (svgr.d.ts):
+
+- Here is the next.config.ts file. I had an issuer property in the config.module.rules object which caused error on build time and I also had to move all assets from the public folder to the root folder to support SVG React Component import. This is the correct config for it.
+```
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  webpack(config) {
+    const fileLoaderRule = config.module.rules.find((rule: any) => rule.test?.test?.('.svg'));
+    
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/i;
+    }
+    
+    config.module.rules.push({
+      test: /\.svg$/i,
+      use: ["@svgr/webpack"]
+    })
+
+    return config;
+  },
+  turbopack: {
+    rules: {
+      "*.svg": {
+        as: "*.js",
+        loaders: ["@svgr/webpack"]
+      }
+    }
+  }
+};
+
+export default nextConfig;
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- svgr.d.ts
+```
+declare module "*.svg" {
+    import { FC, SVGProps } from "react";
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    const content: FC<SVGProps<SVGSVGElement>>;
+    export default content;
+}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Last step: I added ***svgr.d.ts*** file to my tsconfig.json include property array. And for some reasons I had to declare it before next-env.d.ts
+```
+"include": ["svgr.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+```
+That's all, thanks for visiting my REPO 💚
